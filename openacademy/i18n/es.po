@@ -44,7 +44,7 @@ msgstr "Agregar asistentes"
 #. module: openacademy
 #: model:ir.ui.menu,name:openacademy.menu_launch_session_wizard
 msgid "Add Attendees massive"
-msgstr "Añadir asistentes masivos"
+msgstr "Add Attendees massive"
 
 #. module: openacademy
 #: field:openacademy.session,attendee_ids:0
