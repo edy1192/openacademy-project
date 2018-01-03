@@ -13,7 +13,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'report'],
 
     # always loaded
     'data': [
@@ -23,7 +23,8 @@
         'workflow/openacademy_session_workflow.xml',
         'security/security.xml',
         'security/ir.model.access.csv',
-        'view/openacademy_wizard_view.xml',        
+        'view/openacademy_wizard_view.xml',
+        'report/openacademy_session_report.xml',        
     ],
     # only loaded in demonstration mode
     'demo': [
