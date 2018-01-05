@@ -1,27 +1,23 @@
-nguage: python
+language: python
 sudo: false
-cache:
-  apt: true
-  directories:
-    - $HOME/.cache/pip
+cache: pip
 
 python:
   - "2.7"
 
 addons:
   apt:
+# only add the two lines below if you need wkhtmltopdf for your tests
 #    sources:
-#    Search your sources alias here:
-#      https://github.com/travis-ci/apt-source-whitelist/blob/master/ubuntu.json
+#      - pov-wkhtmltopdf
     packages:
       - expect-dev  # provides unbuffer utility
       - python-lxml  # because pip installation is slow
       - python-simplejson
       - python-serial
       - python-yaml
-#     Search your packages here:
-#       https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
-#     For wkhtmltopdf, see the env section below
+#      - wkhtmltopdf  # only add if needed and check the before_install section below
+
 env:
   global:
   - VERSION="8.0" TESTS="0" LINT_CHECK="0"
@@ -43,5 +39,3 @@ script:
 
 after_success:
   - travis_after_tests_success
-
-
