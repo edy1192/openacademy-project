@@ -5,16 +5,18 @@ class Course(models.Model):
     '''
     This class create model of Course
     '''
-    _name = 'openacademy.course' # Model odoo name
+    _name = 'openacademy.course'  # Model odoo name
 
-    name = fields.Char(string='Title', required=True) # Field reserved to identified name rec
+    # Field reserved to identified name rec
+    name = fields.Char(string='Title', required=True)
     description = fields.Text(string='Description')
     responsible_id = fields.Many2one('res.users',
-    				      ondelete='set null',
-				      string="Responsible", index=True)
-    session_ids = fields.One2many('openacademy.session', 'course_id', string="Sessions")
-    
-    @api.multi #  @api.one send defaults params cr, uid, id, context
+                                     ondelete='set null',
+                                     string="Responsible", index=True)
+    session_ids = fields.One2many('openacademy.session', 'course_id',
+                                  string="Sessions")
+
+    @api.multi  # @api.one send defaults params cr, uid, id, context
     def copy(self, default=None):
         default = dict(default or {})
 
@@ -27,8 +29,6 @@ class Course(models.Model):
 
         default['name'] = new_name
         return super(Course, self).copy(default)
-        
-
 
     _sql_constraints = [
         ('name_description_check',
