@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Open Academy",
-
     'summary': """Manage trainings""",
     'author': "vauxoo",
     'website': "http://www.vauxoo.com",
