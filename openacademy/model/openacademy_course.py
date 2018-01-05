@@ -14,7 +14,7 @@ class Course(models.Model):
 				      string="Responsible", index=True)
     session_ids = fields.One2many('openacademy.session', 'course_id', string="Sessions")
     
-    @api.one # api.one send defaults params cr, uid, id, context
+    @api.multi #  @api.one send defaults params cr, uid, id, context
     def copy(self, default=None):
         default = dict(default or {})
 
