@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import division
 from datetime import timedelta
 from openerp import api, exceptions, fields, models, _
 
@@ -85,8 +86,8 @@ class Session(models.Model):
 
     @api.depends('attendee_ids')
     def _get_attendees_count(self):
-        for r in self:
-            r.attendees_count = len(r.attendee_ids)
+        for r_self in self:
+            r_self.attendees_count = len(r_self.attendee_ids)
 
     @api.onchange('seats', 'attendee_ids')
     def _verify_valid_seats(self):
@@ -108,7 +109,8 @@ class Session(models.Model):
 
     @api.constrains('instructor_id', 'attendee_ids')
     def _check_instructor_not_in_attendees(self):
-        for r in self:
-            if r.instructor_id and r.instructor_id in r.attendee_ids:
+        for r_self in self:
+            if (r_self.instructor_id and
+                    r_self.instructor_id in r_self.attendee_ids):
                 raise exceptions.ValidationError(
                     _("A session's instructor can't be an attendee"))
